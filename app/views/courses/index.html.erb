@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Courses</h1>
+<div style="display: inline-block">
+  <h1>My Courses</h1>
+</div>
+<div style="display: inline-block">
+   <%= link_to 'New Course', new_course_path, :class => "btn btn-primary" %>
+</div>
 
 <table>
   <thead>
