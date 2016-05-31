@@ -13,6 +13,7 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <% if user_signed_in? %>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -20,9 +21,10 @@
             <li><%= link_to "My Courses", courses_path %></li>
             <li role="separator" class="divider"></li>
             <li><%= link_to "New Course", new_course_path %></li>
-            <!--<li role="separator" class="divider"></li>-->
+            <li role="separator" class="divider"></li>
           </ul>
         </li>
+        <% end %>
       </ul>
       <!--<form class="navbar-form navbar-left" role="search">-->
       <!--  <div class="form-group">-->
@@ -33,18 +35,21 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %> <span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.first_name %> <%=current_user.last_name %> <span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Settings", edit_user_registration_path %></li>
                 <li role="separator" class="divider"></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-                <!--<li role="separator" class="divider"></li>-->
+                <li role="separator" class="divider"></li>
             </ul>
           </li>
         <% else %>
+          <li role="separator" class="divider"></li>
           <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <li role="separator" class="divider"></li>
           <li><%= link_to "Login", new_user_session_path %></li>
+          <li role="separator" class="divider"></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
