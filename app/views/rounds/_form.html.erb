@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <!--<div class="panel-heading"><h2>Sign Up</h2></div>-->
+  <div class="panel-body">
+    
+  <%= form_for(@round) do |f| %>
+    <% if @round.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@round.errors.count, "error") %> prohibited this round from being saved:</h2>
+  
+        <ul>
+        <% @round.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="form-group">
+      <%= f.label :course %><br>
+      <%= f.collection_select :course, @courses, :id, :name, :prompt => "Select a course" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :tees %><br>
+      <%#= f.collection_select :tees, @tees, :id, :name, :prompt => "Select the tees you played" %>
+    </div>
+    
+    <!--<div class="form-group">-->
+    <!--  <%#= f.label :tees %><br>-->
+      <%#= f.text_field :tees %>
+    <!--  <%#= f.select :tees, ["Black", "Gold", "Blue", "White", "Red", "Other"], class: 'form-horizontal' %>-->
+    <!--</div>-->
+    <div class="actions">
+      <%= f.submit "Save", class: 'btn btn-primary' %>
+    </div>
+  
+  <% end %>
+  
+  </div>
+  
+</div>
