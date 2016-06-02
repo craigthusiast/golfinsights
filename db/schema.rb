@@ -11,22 +11,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160529122455) do
+ActiveRecord::Schema.define(version: 20160601183031) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.integer  "par"
-    t.integer  "rating"
+    t.decimal  "rating",               precision: 3, scale: 1
     t.integer  "slope"
     t.boolean  "favourite"
     t.string   "tees"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
     t.integer  "yardage",    limit: 2
     t.integer  "user_id"
   end
 
   add_index "courses", ["user_id"], name: "index_courses_on_user_id"
+
+  create_table "holes", force: :cascade do |t|
+    t.integer  "number"
+    t.integer  "par"
+    t.boolean  "fairway"
+    t.boolean  "green"
+    t.integer  "putts"
+    t.integer  "missed_driver"
+    t.integer  "missed_fairway_metal"
+    t.integer  "missed_rescue"
+    t.integer  "missed_iron_long"
+    t.integer  "missed_iron_mid"
+    t.integer  "missed_iron_short"
+    t.integer  "missed_chip"
+    t.integer  "missed_pitch"
+    t.integer  "missed_sand"
+    t.integer  "missed_putt_long"
+    t.integer  "missed_putt_mid"
+    t.integer  "missed_putt_short"
+    t.integer  "penalties"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "round_id"
+  end
+
+  add_index "holes", ["round_id"], name: "index_holes_on_round_id"
+
+  create_table "rounds", force: :cascade do |t|
+    t.date     "date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.integer  "course_name_id"
+  end
+
+  add_index "rounds", ["course_name_id"], name: "index_rounds_on_course_name_id"
+  add_index "rounds", ["user_id"], name: "index_rounds_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
