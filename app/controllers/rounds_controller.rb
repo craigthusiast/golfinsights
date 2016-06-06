@@ -2,7 +2,8 @@ class RoundsController < ApplicationController
     before_action :set_round, only: [:show, :edit, :update, :destroy]
 
   def index
-    @rounds = Round.where(user: current_user)
+    @rounds = Round.where(user: current_user).order("date DESC")
+    @courses = Course.all 
   end
 
   def show
@@ -59,6 +60,27 @@ class RoundsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def round_params
-      params.require(:round).permit(:date, :user_id, :course_name_id)
+      params.require(:round).permit(:date, 
+                                    :user_id, 
+                                    :course_id,
+                                    :course_name,
+                                    :score, 
+                                    :adjusted_score, 
+                                    :fairways, 
+                                    :gir, 
+                                    :putts,
+                                    :missed_driver,
+                                    :missed_fairway_metal,
+                                    :missed_rescue,
+                                    :missed_iron_long,
+                                    :missed_iron_mid,
+                                    :missed_iron_short,
+                                    :missed_chip,
+                                    :missed_pitch,
+                                    :missed_sand,
+                                    :missed_putt_long,
+                                    :missed_putt_mid,
+                                    :missed_putt_short,
+                                    :penalties)
     end
 end

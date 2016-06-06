@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160601183031) do
+ActiveRecord::Schema.define(version: 20160605180207) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -56,13 +56,31 @@ ActiveRecord::Schema.define(version: 20160601183031) do
 
   create_table "rounds", force: :cascade do |t|
     t.date     "date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.integer  "user_id"
-    t.integer  "course_name_id"
+    t.integer  "score"
+    t.integer  "fairways"
+    t.integer  "gir"
+    t.integer  "putts"
+    t.integer  "adjusted_score"
+    t.integer  "missed_driver"
+    t.integer  "missed_fairway_metal"
+    t.integer  "missed_rescue"
+    t.integer  "missed_iron_long"
+    t.integer  "missed_iron_mid"
+    t.integer  "missed_iron_short"
+    t.integer  "missed_chip"
+    t.integer  "missed_pitch"
+    t.integer  "missed_sand"
+    t.integer  "missed_putt_long"
+    t.integer  "missed_putt_mid"
+    t.integer  "missed_putt_short"
+    t.integer  "penalties"
+    t.integer  "course_id"
   end
 
-  add_index "rounds", ["course_name_id"], name: "index_rounds_on_course_name_id"
+  add_index "rounds", ["course_id"], name: "index_rounds_on_course_id"
   add_index "rounds", ["user_id"], name: "index_rounds_on_user_id"
 
   create_table "users", force: :cascade do |t|

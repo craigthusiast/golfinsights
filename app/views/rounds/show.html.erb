@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @round.date %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @round.course.name %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @round.score %>
+</p>
+
+<p>
+  <strong>Adjusted Score:</strong>
+  <%= @round.adjusted_score %>
+</p>
+
+<p>
+  <strong>Fairways:</strong>
+  <%= @round.fairways %>
+</p>
+
+<p>
+  <strong>GIR:</strong>
+  <%= @round.gir %>
+</p>
+
+<p>
+  <strong>Putts:</strong>
+  <%= @round.putts %>
+</p>
+
+<%= link_to 'Edit', edit_round_path(@round), :class => "btn btn-primary" %> |
+<%= link_to 'Delete', @round, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %> |
+<%= link_to 'My Rounds', rounds_path, :class => "btn btn-success" %>

@@ -6,8 +6,8 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Course</th>
       <th>Date</th>
+      <th>Course</th>
       <!--<th>Rating</th>-->
       <!--<th>Slope</th>-->
       <!--<th>Favourite</th>-->
@@ -20,7 +20,7 @@
       <% @rounds.each do |round| %>
         <tr>
           <td><%= link_to round.date, round %></td>
-          <td><%= round.course %></td>
+          <td><%= round.course.name %></td>
           <td><%= round.score %></td>
           <td><%#= link_to 'Show', course %></td>
           <td><%#= link_to 'Edit', edit_course_path(course) %></td>

@@ -14,15 +14,108 @@
         </ul>
       </div>
     <% end %>
-  
+    
     <div class="form-group">
-      <%= f.label :course %><br>
-      <%= f.collection_select :course, @courses, :id, :name, :prompt => "Select a course" %>
+      <%= f.label :date %><br>
+      <%= f.date_field :date %>
     </div>
     
     <div class="form-group">
-      <%= f.label :tees %><br>
-      <%#= f.collection_select :tees, @tees, :id, :name, :prompt => "Select the tees you played" %>
+      <%= f.label :course %><br>
+      <%= f.collection_select(:course_id, Course.all, :id, :name, :prompt => "Select a course") %>
+      <%#= f.collection_select :post, :author_id, Author.all, :id, :name_with_initial, :prompt => "Select a course" %>
+      <%#= f.collection_select :round, :course_id, @courses, :id, :name, :prompt => "Select a course" %>
+      <%#= f.collection_select :course, :course_id, @courses, :id, :name, :prompt => "Select a course" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :score, class: 'form-horizontal' %><br>
+      <%= f.number_field :score %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :adjusted_score %><br>
+      <%= f.number_field :adjusted_score %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :fairways %><br>
+      <%= f.number_field :fairways %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :gir %><br>
+      <%= f.number_field :gir %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :putts %><br>
+      <%= f.number_field :putts %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_driver %><br>
+      <%= f.number_field :missed_driver %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_fairway_metal %><br>
+      <%= f.number_field :missed_fairway_metal %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_rescue %><br>
+      <%= f.number_field :missed_rescue %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_iron_long %><br>
+      <%= f.number_field :missed_iron_long %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_iron_mid %><br>
+      <%= f.number_field :missed_iron_mid %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_iron_short %><br>
+      <%= f.number_field :missed_iron_short %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_chip %><br>
+      <%= f.number_field :missed_chip %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_pitch %><br>
+      <%= f.number_field :missed_pitch %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_sand %><br>
+      <%= f.number_field :missed_sand %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_putt_long %><br>
+      <%= f.number_field :missed_putt_long %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_putt_mid %><br>
+      <%= f.number_field :missed_putt_mid %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :missed_putt_short %><br>
+      <%= f.number_field :missed_putt_short %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :penalties %><br>
+      <%= f.number_field :penalties %>
     </div>
     
     <!--<div class="form-group">-->
