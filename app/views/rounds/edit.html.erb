@@ -1,0 +1,7 @@
+<h1>Editing Round</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Cancel', @round, :class => "btn btn-primary" %>
+<%= link_to 'Delete', @round, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
+<%= link_to 'My Rounds', rounds_path, :class => "btn btn-success" %>

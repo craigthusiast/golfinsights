@@ -16,115 +16,107 @@
     <% end %>
     
     <div class="form-group">
-      <%= f.label :date %><br>
-      <%= f.date_field :date %>
+      <%= f.label :date, class: 'sr-only' %><br>
+      <%= f.date_field :date, class: 'form-control', placeholder: 'Date' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :course %><br>
-      <%= f.collection_select(:course_id, Course.all, :id, :name, :prompt => "Select a course") %>
-      <%#= f.collection_select :post, :author_id, Author.all, :id, :name_with_initial, :prompt => "Select a course" %>
-      <%#= f.collection_select :round, :course_id, @courses, :id, :name, :prompt => "Select a course" %>
-      <%#= f.collection_select :course, :course_id, @courses, :id, :name, :prompt => "Select a course" %>
+      <%#= f.label :course %><br>
+      <%= f.collection_select(:course_id, Course.all, :id, :name, :prompt => "Select a course") %> | <%= link_to 'Add Course', new_course_path, :class => ["btn btn-primary", "btn-xs"] %>
     </div>
     
     <div class="form-group">
-      <%= f.label :score, class: 'form-horizontal' %><br>
-      <%= f.number_field :score %>
+      <%= f.label :score, class: 'sr-only' %><br>
+      <%= f.number_field :score, class: 'form-control', placeholder: 'Score' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :adjusted_score %><br>
-      <%= f.number_field :adjusted_score %>
+      <%= f.label :adjusted_score, class: 'sr-only' %><br>
+      <%= f.number_field :adjusted_score, class: 'form-control', placeholder: 'Adjusted Score' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :fairways %><br>
-      <%= f.number_field :fairways %>
+      <%= f.label :fairways, class: 'sr-only' %><br>
+      <%= f.number_field :fairways, class: 'form-control', placeholder: 'Fairways Hit' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :gir %><br>
-      <%= f.number_field :gir %>
+      <%= f.label :gir, class: 'sr-only' %><br>
+      <%= f.number_field :gir, class: 'form-control', placeholder: 'Greens in Regulation' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :putts %><br>
-      <%= f.number_field :putts %>
+      <%= f.label :putts, class: 'sr-only' %><br>
+      <%= f.number_field :putts, class: 'form-control', placeholder: 'Number of Putts' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_driver %><br>
-      <%= f.number_field :missed_driver %>
+      <%= f.label :missed_driver, class: 'sr-only' %><br>
+      <%= f.number_field :missed_driver, class: 'form-control', placeholder: 'Missed: Drivers' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_fairway_metal %><br>
-      <%= f.number_field :missed_fairway_metal %>
+      <%= f.label :missed_fairway_metal, class: 'sr-only' %><br>
+      <%= f.number_field :missed_fairway_metal, class: 'form-control', placeholder: 'Missed: Fairway Woods' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_rescue %><br>
-      <%= f.number_field :missed_rescue %>
+      <%= f.label :missed_rescue, class: 'sr-only' %><br>
+      <%= f.number_field :missed_rescue, class: 'form-control', placeholder: 'Missed: Rescue Clubs' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_iron_long %><br>
-      <%= f.number_field :missed_iron_long %>
+      <%= f.label :missed_iron_long, class: 'sr-only' %><br>
+      <%= f.number_field :missed_iron_long, class: 'form-control', placeholder: 'Missed: Long Irons' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_iron_mid %><br>
-      <%= f.number_field :missed_iron_mid %>
+      <%= f.label :missed_iron_mid, class: 'sr-only' %><br>
+      <%= f.number_field :missed_iron_mid, class: 'form-control', placeholder: 'Missed: Middle Irons' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_iron_short %><br>
-      <%= f.number_field :missed_iron_short %>
+      <%= f.label :missed_iron_short, class: 'sr-only' %><br>
+      <%= f.number_field :missed_iron_short, class: 'form-control', placeholder: 'Missed: Short Irons' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_chip %><br>
-      <%= f.number_field :missed_chip %>
+      <%= f.label :missed_chip, class: 'sr-only' %><br>
+      <%= f.number_field :missed_chip, class: 'form-control', placeholder: 'Missed: Chips' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_pitch %><br>
-      <%= f.number_field :missed_pitch %>
+      <%= f.label :missed_pitch, class: 'sr-only' %><br>
+      <%= f.number_field :missed_pitch, class: 'form-control', placeholder: 'Missed: Pitch Shots' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_sand %><br>
-      <%= f.number_field :missed_sand %>
+      <%= f.label :missed_sand, class: 'sr-only' %><br>
+      <%= f.number_field :missed_sand, class: 'form-control', placeholder: 'Missed: Sand Shots' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_putt_long %><br>
-      <%= f.number_field :missed_putt_long %>
+      <%= f.label :missed_putt_long, class: 'sr-only' %><br>
+      <%= f.number_field :missed_putt_long, class: 'form-control', placeholder: 'Missed: Long Putts' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_putt_mid %><br>
-      <%= f.number_field :missed_putt_mid %>
+      <%= f.label :missed_putt_mid, class: 'sr-only' %><br>
+      <%= f.number_field :missed_putt_mid, class: 'form-control', placeholder: 'Missed: Medium Putts' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_putt_short %><br>
-      <%= f.number_field :missed_putt_short %>
+      <%= f.label :missed_putt_short, class: 'sr-only' %><br>
+      <%= f.number_field :missed_putt_short, class: 'form-control', placeholder: 'Missed: Short Putts' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :penalties %><br>
-      <%= f.number_field :penalties %>
+      <%= f.label :penalties, class: 'sr-only' %><br>
+      <%= f.number_field :penalties, class: 'form-control', placeholder: 'Penalties' %>
     </div>
-    
-    <!--<div class="form-group">-->
-    <!--  <%#= f.label :tees %><br>-->
-      <%#= f.text_field :tees %>
-    <!--  <%#= f.select :tees, ["Black", "Gold", "Blue", "White", "Red", "Other"], class: 'form-horizontal' %>-->
-    <!--</div>-->
+
     <div class="actions">
-      <%= f.submit "Save", class: 'btn btn-primary' %>
+      <%= f.submit "Save Round", class: 'btn btn-warning' %>
     </div>
   
   <% end %>

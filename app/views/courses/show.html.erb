@@ -35,6 +35,6 @@
   <%= @course.tees %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course), :class => "btn btn-primary" %> |
-<%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %> |
+<%= link_to 'Edit', edit_course_path(@course), :class => "btn btn-primary" %>
+<%= link_to 'Delete', @course, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 <%= link_to 'My Courses', courses_path, :class => "btn btn-success" %>

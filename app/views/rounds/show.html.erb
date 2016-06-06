@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Round Info:</h1>
+
 <p>
   <strong>Date:</strong>
   <%= @round.date %>
@@ -20,13 +22,17 @@
   <%= @round.adjusted_score %>
 </p>
 
+<hr>
+
+<h1>Performance Stats:</h1>
+
 <p>
   <strong>Fairways:</strong>
   <%= @round.fairways %>
 </p>
 
 <p>
-  <strong>GIR:</strong>
+  <strong>Greens in Regulation:</strong>
   <%= @round.gir %>
 </p>
 
@@ -35,6 +41,73 @@
   <%= @round.putts %>
 </p>
 
-<%= link_to 'Edit', edit_round_path(@round), :class => "btn btn-primary" %> |
-<%= link_to 'Delete', @round, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %> |
+<p>
+  <strong>Missed Drivers:</strong>
+  <%= @round.missed_driver %>
+</p>
+
+<p>
+  <strong>Missed Fairway Woods:</strong>
+  <%= @round.missed_fairway_metal %>
+</p>
+
+<p>
+  <strong>Missed Rescue Clubs:</strong>
+  <%= @round.missed_rescue %>
+</p>
+
+<p>
+  <strong>Missed Long Irons:</strong>
+  <%= @round.missed_iron_long %>
+</p>
+
+<p>
+  <strong>Missed Middle Irons:</strong>
+  <%= @round.missed_iron_mid %>
+</p>
+
+<p>
+  <strong>Missed Short Irons:</strong>
+  <%= @round.missed_iron_short %>
+</p>
+
+<p>
+  <strong>Missed Chips:</strong>
+  <%= @round.missed_chip %>
+</p>
+
+<p>
+  <strong>Missed Pitches:</strong>
+  <%= @round.missed_pitch %>
+</p>
+
+<p>
+  <strong>Missed Sand Shots:</strong>
+  <%= @round.missed_sand %>
+</p>
+
+<p>
+  <strong>Missed Long Putts:</strong>
+  <%= @round.missed_putt_long %>
+</p>
+
+<p>
+  <strong>Missed Medium Putts:</strong>
+  <%= @round.missed_putt_mid %>
+</p>
+
+<p>
+  <strong>Missed Short Putts:</strong>
+  <%= @round.missed_putt_short %>
+</p>
+
+<p>
+  <strong>Penalty Strokes:</strong>
+  <%= @round.penalties %>
+</p>
+
+<hr>
+
+<%= link_to 'Edit', edit_round_path(@round), :class => "btn btn-primary" %>
+<%= link_to 'Delete', @round, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %>
 <%= link_to 'My Rounds', rounds_path, :class => "btn btn-success" %>
