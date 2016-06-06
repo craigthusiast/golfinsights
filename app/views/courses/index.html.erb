@@ -1,7 +1,5 @@
-<p id="notice"><%= notice %></p>
 <div style="display: inline-block">
   <h1>My Courses</h1>
-  <%#= link_to 'New Course', new_course_path, :class => "btn btn-primary" %>
 </div>
 <table class="table table-striped">
   <thead>
@@ -11,8 +9,8 @@
       <th>Rating</th>
       <th>Slope</th>
       <th>Tees</th>
-      <th>Favourite</th>
-      <th colspan="6"></th>
+      <!--<th>Favourite</th>-->
+      <th colspan="5"></th>
     </tr>
   </thead>
   <tbody>
@@ -24,10 +22,7 @@
           <td><%= course.rating %></td>
           <td><%= course.slope %></td>
           <td><%= course.tees %></td>
-          <td><%= course.favourite %></td>
-          <td><%#= link_to 'Show', course %></td>
-          <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-          <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          <!--<td><%#= course.favourite %></td>-->
         </tr>
       <% end %>
     <% else %>
@@ -38,4 +33,3 @@
 
 <br>
 <%= link_to 'Add Course', new_course_path, :class => "btn btn-primary" %>
-<%#= link_to 'New Course', new_course_path %>
