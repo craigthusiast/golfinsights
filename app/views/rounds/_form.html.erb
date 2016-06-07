@@ -51,6 +51,11 @@
     </div>
     
     <div class="form-group">
+      <%= f.label :three_putts, class: 'sr-only' %><br>
+      <%= f.number_field :three_putts, class: 'form-control', placeholder: 'Number of 3+ Putts' %>
+    </div>
+    
+    <div class="form-group">
       <%= f.label :missed_driver, class: 'sr-only' %><br>
       <%= f.number_field :missed_driver, class: 'form-control', placeholder: 'Missed: Drivers' %>
     </div>

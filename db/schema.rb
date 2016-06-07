@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605180207) do
+ActiveRecord::Schema.define(version: 20160607013451) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20160605180207) do
 
   create_table "rounds", force: :cascade do |t|
     t.date     "date"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "user_id"
     t.integer  "score"
     t.integer  "fairways"
@@ -78,6 +78,9 @@ ActiveRecord::Schema.define(version: 20160605180207) do
     t.integer  "missed_putt_short"
     t.integer  "penalties"
     t.integer  "course_id"
+    t.integer  "three_putts"
+    t.decimal  "handicap_differential", precision: 3, scale: 1
+    t.decimal  "differential",          precision: 3, scale: 1
   end
 
   add_index "rounds", ["course_id"], name: "index_rounds_on_course_id"
