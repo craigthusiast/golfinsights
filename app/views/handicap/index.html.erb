@@ -1,5 +1,10 @@
 <div style="display: inline-block">
-  <h1>My Rounds</h1>
+  <h1>My Handicap: <%= @handicap %></h1>
+  <h4>(average of lowest 10 of last 20 rounds)</h4>
+</div>
+<div style="display: block">
+  <br>
+  <h3>Last 20 rounds:</h3>
 </div>
 <table class="table table-striped">
   <thead>
@@ -32,6 +37,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-<%= link_to 'Add a Round', new_round_path, :class => "btn btn-primary" %>

@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   
   root :to => 'home#index'
   
+  get 'courses/my_courses'
+  get 'handicap/index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
