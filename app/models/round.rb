@@ -21,7 +21,7 @@ class Round < ActiveRecord::Base
     end
     
     def self.handicap
-        self.average(:handicap_differential)
+        self.lowest_two.average(:handicap_differential)
     end
     
     # def calculate_handicap
