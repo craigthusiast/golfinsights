@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607013451) do
+ActiveRecord::Schema.define(version: 20160614141932) do
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 20160607013451) do
     t.integer  "three_putts"
     t.decimal  "handicap_differential", precision: 3, scale: 1
     t.decimal  "differential",          precision: 3, scale: 1
+    t.boolean  "handicap_eligible"
   end
 
   add_index "rounds", ["course_id"], name: "index_rounds_on_course_id"
