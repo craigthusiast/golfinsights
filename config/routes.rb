@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
   resources :courses
   resources :rounds
@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   
   get 'courses/my_courses'
   get 'handicap/index'
+  get 'stats/index'
   
 end

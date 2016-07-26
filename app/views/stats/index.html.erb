@@ -1,0 +1,38 @@
+<div style="display: inline-block">
+  <h1>My Averages:</h1>
+  <!--Need error handling here for nil rounds-->
+  <!--should maybe look at using decimal instead of float-->
+</div>
+<div style="display: block">
+  <br>
+</div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Rounds</th>
+      <th>Score</th>
+      <th>Fairways</th>
+      <th>GIR</th>
+      <th>Putts</th>
+      <th>3-Putts</th>
+      <th colspan="7"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @rounds.any? %>
+      <tr>
+        <td><%= @rounds.count %></td>
+        <td><%= @rounds.average("score").round %></td>
+        <td><%= @rounds.average("fairways").round %></td>
+        <td><%= @rounds.average("gir").round %></td>
+        <td><%= @rounds.average("putts").round %></td>
+        <td><%= @rounds.average("three_putts").round %></td>
+        <td><%#= link_to 'Show', course %></td>
+        <td><%#= link_to 'Edit', edit_course_path(course) %></td>
+        <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+      </tr>
+    <% else %>
+      <p>Nothing to display...</p>
+    <% end %>
+  </tbody>
+</table>
