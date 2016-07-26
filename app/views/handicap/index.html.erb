@@ -7,8 +7,11 @@
 </div>
 <div style="display: block">
   <br>
-  <% if @rounds.count >= 5 %>
-    <h3><%= @eligible_rounds.count %> lowest rounds (from last <%= @rounds.count %> played):</h3>
+  <% if @rounds.count >= 5 && @rounds.count < 20 %>
+    <h4>Average of <%= @eligible_rounds.count %> lowest rounds (of last <%= @rounds.count %> played):</h4>
+  <% elsif @rounds.count >= 20 %>
+    <h4>Average of <%= @eligible_rounds.count %> lowest rounds (of last 20 played):</h4>
+  <% else %>
   <% end %>
 </div>
 <table class="table table-striped">

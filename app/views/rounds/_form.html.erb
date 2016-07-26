@@ -16,13 +16,13 @@
     <% end %>
     
     <div class="form-group">
-      <%#= f.label :date, class: 'sr-only' %><br>
-      <%= f.date_field :date, class: 'form-control', prompt: true %> 
+      <%#= f.label :course %><br>
+      <%= f.collection_select(:course_id, Course.all.order("name ASC"), :id, :name, :prompt => "Select a course") %> or <%= link_to 'Add a new Course', new_course_path %>
     </div>
     
     <div class="form-group">
-      <%#= f.label :course %><br>
-      <%= f.collection_select(:course_id, Course.all, :id, :name, :prompt => "Select a course") %> or <%= link_to 'Add a new Course', new_course_path %>
+      <%#= f.label :date, class: 'sr-only' %><br>
+      <%= f.date_field :date, class: 'form-control', prompt: true %> 
     </div>
     
     <div class="form-group">
@@ -65,10 +65,10 @@
       <%= f.number_field :missed_fairway_metal, class: 'form-control', placeholder: 'Missed: Fairway Woods' %>
     </div>
     
-    <div class="form-group">
-      <%= f.label :missed_rescue, class: 'sr-only' %><br>
-      <%= f.number_field :missed_rescue, class: 'form-control', placeholder: 'Missed: Rescue Clubs' %>
-    </div>
+    <!--<div class="form-group">-->
+    <!--  <%#= f.label :missed_rescue, class: 'sr-only' %><br>-->
+    <!--  <%#= f.number_field :missed_rescue, class: 'form-control', placeholder: 'Missed: Rescue Clubs' %>-->
+    <!--</div>-->
     
     <div class="form-group">
       <%= f.label :missed_iron_long, class: 'sr-only' %><br>
@@ -86,13 +86,13 @@
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_chip, class: 'sr-only' %><br>
-      <%= f.number_field :missed_chip, class: 'form-control', placeholder: 'Missed: Chips' %>
+      <%= f.label :missed_pitch, class: 'sr-only' %><br>
+      <%= f.number_field :missed_pitch, class: 'form-control', placeholder: 'Missed: Pitch Shots' %>
     </div>
     
     <div class="form-group">
-      <%= f.label :missed_pitch, class: 'sr-only' %><br>
-      <%= f.number_field :missed_pitch, class: 'form-control', placeholder: 'Missed: Pitch Shots' %>
+      <%= f.label :missed_chip, class: 'sr-only' %><br>
+      <%= f.number_field :missed_chip, class: 'form-control', placeholder: 'Missed: Chips' %>
     </div>
     
     <div class="form-group">
