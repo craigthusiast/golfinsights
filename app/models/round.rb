@@ -14,7 +14,7 @@ class Round < ApplicationRecord
   
   def self.eligible
     if count < 5
-      @eligible_rounds = "N/A (need minimum of 5 rounds)"
+      @eligible_rounds = "N/A"
     elsif count == 5 || count == 6
       eligible = 1
       @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
@@ -50,7 +50,7 @@ class Round < ApplicationRecord
   
   def self.handicap
     if count < 5
-      @handicap = "N/A (need minimum of 5 rounds)"
+      @handicap = "N/A"
     elsif count == 5 || count == 6
       eligible = 1
       @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible

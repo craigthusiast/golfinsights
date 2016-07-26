@@ -1,11 +1,15 @@
 <div style="display: inline-block">
-  <h1>My Handicap: <%= @handicap.round(1) %></h1>
-  <!--Need error handling here for nil rounds-->
-  <!--should maybe look at using decimal instead of float-->
+  <% if @rounds.count < 5 %>
+    <h1>My Handicap: <%= @handicap %></h1>
+  <% else %>
+    <h1>My Handicap: <%= @handicap.round %></h1>
+  <% end %>
 </div>
 <div style="display: block">
   <br>
-  <h3><%= @eligible_rounds.count %> lowest rounds (from last <%= @rounds.count %> played):</h3>
+  <% if @rounds.count >= 5 %>
+    <h3><%= @eligible_rounds.count %> lowest rounds (from last <%= @rounds.count %> played):</h3>
+  <% end %>
 </div>
 <table class="table table-striped">
   <thead>
@@ -21,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <% if @eligible_rounds.any? %>
+    <% if @rounds.count >= 5 %>
       <% @eligible_rounds.each do |round| %>
         <tr>
           <td><%= link_to round.date, round %></td>
@@ -34,7 +38,18 @@
         </tr>
       <% end %>
     <% else %>
-      <p>Nothing to display...</p>
+      <p>Need minimum of 5 rounds to calculate handicap...</p>
+      <% @rounds.each do |round| %>
+        <tr>
+          <td><%= link_to round.date, round %></td>
+          <td><%= round.course.name %></td>
+          <td><%= round.score %></td>
+          <td><%= round.handicap_differential %></td>
+          <td><%#= link_to 'Show', course %></td>
+          <td><%#= link_to 'Edit', edit_course_path(course) %></td>
+          <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
