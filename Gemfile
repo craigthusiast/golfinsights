@@ -15,11 +15,13 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'sqlite3'
+  gem 'pry-rails'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  # gem 'pry', '~> 0.10.4'
 end
 
 group :production do

@@ -1,61 +1,87 @@
 class Round < ActiveRecord::Base
   belongs_to :user
   belongs_to :course
-  has_many :holes
+  has_many :holes, dependent: :destroy
   
-  before_save :calculate_differential
-  before_save :eligible
+  before_save :calculate_differential  # Use before_create instead so that it doesn't change inadvertently when the record is subsequently saved
   
   scope :last_twenty, -> { order("handicap_differential ASC", "date DESC").limit(20) }
-  # default_scope { order("handicap_differential ASC", "date DESC").limit(1) }
 
   def calculate_differential
-      # self.differential = self.score - 2
       self.differential = self.score.to_f - self.course.rating
       self.handicap_differential = self.differential * (113 / self.course.slope.to_f)
   end
   
-  def eligible
-    high = 20
-    low = 5
-    if self.size >= high && self.last_twenty?
-      self.handicap_eligible = true
-    elsif self.size < high and self.size >= low
-      self.handicap_eligible = true
-    else
-      self.handicap_eligible = false
+  def self.eligible
+    if count < 5
+      @eligible_rounds = "N/A (need minimum of 5 rounds)"
+    elsif count == 5 || count == 6
+      eligible = 1
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 7 || count == 8
+      eligible = 2
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 9 || count == 10
+      eligible = 3
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 11 || count == 12
+      eligible = 4
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 13 || count == 14
+      eligible = 5
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 15 || count == 16
+      eligible = 6
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 17
+      eligible = 7
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 18
+      eligible = 8
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count == 19
+      eligible = 9
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
+    elsif count >= 20
+      eligible = 10
+      @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
     end
   end
-
-  def self.lowest_ten
-    self.last_twenty.first(10)
-  end
-    
-  def self.handicap
-    self.average(:handicap_differential)
-  end
   
-  # def self.handicap
-  #   if self.size == 5 or 6
-  #     self.handicap = lowest(1)
-  #   elsif self.size = 7 or 8
-  #     self.handicap = lowest(2).average(:handicap_differential)
-  #   elsif self.size = 9 or 10
-  #     self.handicap = lowest(3).average(:handicap_differential)
-  #   elsif self.size = 11 or 12
-  #     self.handicap = lowest(4).average(:handicap_differential)
-  #   elsif self.size = 13 or 14
-  #     self.handicap = lowest(5).average(:handicap_differential)
-  #   elsif self.size = 15 or 16
-  #     self.handicap = lowest(6).average(:handicap_differential)
-  #   elsif self.size = 17
-  #     self.handicap = lowest(7).average(:handicap_differential)
-  #   elsif self.size = 18
-  #     self.handicap = lowest(8).average(:handicap_differential)
-  #   elsif self.size = 19
-  #     self.handicap = lowest(9).average(:handicap_differential)
-  #   else self.size >= 20
-  #     self.handicap = lowest(10).average(:handicap_differential)
-  # end
+  def self.handicap
+    if count < 5
+      @handicap = "N/A (need minimum of 5 rounds)"
+    elsif count == 5 || count == 6
+      eligible = 1
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 7 || count == 8
+      eligible = 2
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 9 || count == 10
+      eligible = 3
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 11 || count == 12
+      eligible = 4
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 13 || count == 14
+      eligible = 5
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 15 || count == 16
+      eligible = 6
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 17
+      eligible = 7
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 18
+      eligible = 8
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count == 19
+      eligible = 9
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    elsif count >= 20
+      eligible = 10
+      @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible
+    end
+  end
     
 end

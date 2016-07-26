@@ -1,10 +1,11 @@
 <div style="display: inline-block">
-  <h1>My Handicap: <%= @handicap %></h1>
-  <h4>(average of lowest 10 of last 20 rounds)</h4>
+  <h1>My Handicap: <%= @handicap.round(1) %></h1>
+  <!--Need error handling here for nil rounds-->
+  <!--should maybe look at using decimal instead of float-->
 </div>
 <div style="display: block">
   <br>
-  <h3>Last 20 rounds:</h3>
+  <h3><%= @eligible_rounds.count %> lowest rounds (from last <%= @rounds.count %> played):</h3>
 </div>
 <table class="table table-striped">
   <thead>
@@ -20,8 +21,8 @@
     </tr>
   </thead>
   <tbody>
-    <% if @rounds.any? %>
-      <% @rounds.each do |round| %>
+    <% if @eligible_rounds.any? %>
+      <% @eligible_rounds.each do |round| %>
         <tr>
           <td><%= link_to round.date, round %></td>
           <td><%= round.course.name %></td>
