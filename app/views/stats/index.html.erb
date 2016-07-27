@@ -1,110 +1,68 @@
 <div style="display: inline-block">
-  <h1>Round Statistics (averages):</h1>
+  <h1># of Rounds: <%= @rounds.count %></h1>
   <!--Need error handling here for nil rounds-->
   <!--should maybe look at using decimal instead of float-->
 </div>
 <div style="display: block">
   <br>
+  <!--<h4>Performance:</h4>-->
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Rounds</th>
-      <th>Score</th>
-      <th>Fairways</th>
-      <th>GIR</th>
-      <th>Putts</th>
-      <th>3-Putts</th>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @rounds.any? %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= @rounds.count %></td>
-        <td><%= @rounds.average("score").round %></td>
-        <td><%= @rounds.average("fairways").round %></td>
-        <td><%= @rounds.average("gir").round %></td>
-        <td><%= @rounds.average("putts").round %></td>
-        <td><%= @rounds.average("three_putts").round %></td>
-        <td><%#= link_to 'Show', course %></td>
-        <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-        <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <th>Results</th>
+        <th>Average</th>
+        <!--<th colspan="2"></th>-->
       </tr>
-    <% else %>
-      <p>Nothing to display...</p>
-    <% end %>
-  </tbody>
-</table>
-<div style="display: inline-block">
-  <h1>Long Game (averages):</h1>
-  <!--Need error handling here for nil rounds-->
-  <!--should maybe look at using decimal instead of float-->
+    </thead>
+    <tbody>
+      <% if @rounds.any? %>
+        <tr><td>Average Score:</td><td><%= @rounds.average("score").round %></td></tr>
+        <tr><td>Fairways Hit:</td><td><%= @rounds.average("fairways").round %>  (<%#= @rounds.average("fairways") / 14 * 100 %> %)</td></tr>
+        <tr><td>Greens in Regulation:</td><td><%= @rounds.average("gir").round %>  (<%#= @rounds.average("gir") / 18 * 100 %> %)</td></tr>
+        <tr><td>Putts per Round:</td><td><%= @rounds.average("putts").round %></td></tr>
+        <tr><td>3-Putts per Round:</td><td><%= @rounds.average("three_putts").round %></td></tr>
+        <tr><td>Penalty Strokes:</td><td><%= @rounds.average("penalties").round %></td></tr>
+      <% else %>
+        <p>Nothing to display...</p>
+      <% end %>
+    </tbody>
+  </table>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Rounds</th>
-      <th>Drivers</th>
-      <th>Woods</th>
-      <th>Irons (L)</th>
-      <th>Irons (M)</th>
-      <th>Irons (S)</th>
-      <th colspan="6"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @rounds.any? %>
-      <tr>
-        <td><%= @rounds.count %></td>
-        <td><%= @rounds.average("missed_driver").round %></td>
-        <td><%= @rounds.average("missed_fairway_metal").round %></td>
-        <td><%= @rounds.average("missed_iron_long").round %></td>
-        <td><%= @rounds.average("missed_iron_mid").round %></td>
-        <td><%= @rounds.average("missed_iron_short").round %></td>
-        <td><%#= link_to 'Show', course %></td>
-        <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-        <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-      </tr>
-    <% else %>
-      <p>Nothing to display...</p>
-    <% end %>
-  </tbody>
-</table>
-<div style="display: inline-block">
-  <h1>Short Game (averages):</h1>
-  <!--Need error handling here for nil rounds-->
-  <!--should maybe look at using decimal instead of float-->
+<div style="display: block">
+  <br>
+  <!--<h4>Missed Shots:</h4>-->
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Rounds</th>
-      <th>Pitches</th>
-      <th>Chips</th>
-      <th>Sand</th>
-      <th>Putts (L)</th>
-      <th>Putts (M)</th>
-      <th>Putts (S)</th>
-      <th colspan="7"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @rounds.any? %>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= @rounds.count %></td>
-        <td><%= @rounds.average("missed_pitch").round %></td>
-        <td><%= @rounds.average("missed_chip").round %></td>
-        <td><%= @rounds.average("missed_sand").round %></td>
-        <td><%= @rounds.average("missed_putt_long").round %></td>
-        <td><%= @rounds.average("missed_putt_mid").round %></td>
-        <td><%= @rounds.average("missed_putt_short").round %></td>
-        <td><%#= link_to 'Show', course %></td>
-        <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-        <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <th>Missed Shots</th>
+        <th>Average</th>
+        <!--<th colspan="2"></th>-->
       </tr>
-    <% else %>
-      <p>Nothing to display...</p>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% if @rounds.any? %>
+        <tr><td>Drivers:</td><td><%= @rounds.average("missed_driver").round %></td></tr>
+        <tr><td>Fairway Woods:</td><td><%= @rounds.average("missed_fairway_metal").round %></td></tr>
+        <tr><td style="font-weight: bold">Missed Woods (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_driver").round + @rounds.average("missed_fairway_metal").round %></td></tr>
+        <tr><td>Long Irons (3-5):</td><td><%= @rounds.average("missed_iron_long").round %></td></tr>
+        <tr><td>Mid Irons (6-8):</td><td><%= @rounds.average("missed_iron_mid").round %></td></tr>
+        <tr><td>Short Irons (9-LW):</td><td><%= @rounds.average("missed_iron_short").round %></td></tr>
+        <tr><td style="font-weight: bold">Missed Irons (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_iron_long").round + @rounds.average("missed_iron_mid").round + @rounds.average("missed_iron_short").round %></td></tr>
+        <tr><td>Pitches:</td><td><%= @rounds.average("missed_pitch").round %></td></tr>
+        <tr><td>Chips:</td><td><%= @rounds.average("missed_chip").round %></td></tr>
+        <tr><td>Sand Shots:</td><td><%= @rounds.average("missed_sand").round %></td></tr>
+        <tr><td style="font-weight: bold">Missed Short Game (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_pitch").round + @rounds.average("missed_chip").round + @rounds.average("missed_sand").round %></td></tr>
+        <tr><td>Long Putts:</td><td><%= @rounds.average("missed_putt_long").round %></td></tr>
+        <tr><td>Medium Putts:</td><td><%= @rounds.average("missed_putt_mid").round %></td></tr>
+        <tr><td>Short Putts:</td><td><%= @rounds.average("missed_putt_short").round %></td></tr>
+        <tr><td style="font-weight: bold">Missed Putts (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_putt_long").round + @rounds.average("missed_putt_mid").round + @rounds.average("missed_putt_short").round %></td></tr>
+      <% else %>
+        <p>Nothing to display...</p>
+      <% end %>
+    </tbody>
+  </table>
+</div>

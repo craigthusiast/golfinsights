@@ -1,58 +1,62 @@
 <div style="display: inline-block">
   <% if @rounds.count < 5 %>
     <h1>My Handicap: <%= @handicap %></h1>
-  <% else %>
+  <% else @rounds.count >= 5 %>
     <h1>My Handicap: <%= @handicap.round %></h1>
   <% end %>
 </div>
 <div style="display: block">
   <br>
   <% if @rounds.count >= 5 && @rounds.count < 20 %>
-    <h4>Average of <%= @eligible_rounds.count %> lowest rounds (of last <%= @rounds.count %> played):</h4>
+    <h4>Lowest <%= @eligible_rounds.count %> of last <%= @rounds.count %> rounds:</h4>
   <% elsif @rounds.count >= 20 %>
-    <h4>Average of <%= @eligible_rounds.count %> lowest rounds (of last 20 played):</h4>
+    <h4>Lowest <%= @eligible_rounds.count %> of last 20 rounds:</h4>
   <% else %>
   <% end %>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Course</th>
-      <!--<th>Rating</th>-->
-      <!--<th>Slope</th>-->
-      <!--<th>Favourite</th>-->
-      <th>Score</th>
-      <th>Handicap</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @rounds.count >= 5 %>
-      <% @eligible_rounds.each do |round| %>
-        <tr>
-          <td><%= link_to round.date, round %></td>
-          <td><%= round.course.name %></td>
-          <td><%= round.score %></td>
-          <td><%= round.handicap_differential %></td>
-          <td><%#= link_to 'Show', course %></td>
-          <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-          <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-        </tr>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Course</th>
+        <!--<th>Rating</th>-->
+        <!--<th>Slope</th>-->
+        <!--<th>Favourite</th>-->
+        <th>Score</th>
+        <th>Handicap</th>
+        <th colspan="4"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @rounds.count >= 5 %>
+        <% @eligible_rounds.each do |round| %>
+          <tr>
+            <td><%= link_to round.date, round %></td>
+            <td><%= round.course.name %></td>
+            <td><%= round.score %></td>
+            <td><%= round.handicap_differential %></td>
+            <td><%#= link_to 'Show', course %></td>
+            <td><%#= link_to 'Edit', edit_course_path(course) %></td>
+            <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          </tr>
+        <% end %>
+      <% elsif @rounds.count >= 1 && @rounds.count < 5 %>
+        <p>Need minimum of 5 rounds to calculate handicap...</p>
+        <% @rounds.each do |round| %>
+          <tr>
+            <td><%= link_to round.date, round %></td>
+            <td><%= round.course.name %></td>
+            <td><%= round.score %></td>
+            <td><%= round.handicap_differential %></td>
+            <td><%#= link_to 'Show', course %></td>
+            <td><%#= link_to 'Edit', edit_course_path(course) %></td>
+            <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+          </tr>
+        <% end %>
+      <% else %>
+        <%= link_to "Enter your first round", new_round_path %>
       <% end %>
-    <% else %>
-      <p>Need minimum of 5 rounds to calculate handicap...</p>
-      <% @rounds.each do |round| %>
-        <tr>
-          <td><%= link_to round.date, round %></td>
-          <td><%= round.course.name %></td>
-          <td><%= round.score %></td>
-          <td><%= round.handicap_differential %></td>
-          <td><%#= link_to 'Show', course %></td>
-          <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-          <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,116 @@
+<div style="display: inline-block">
+  <h1>Round Statistics (averages):</h1>
+  <!--Need error handling here for nil rounds-->
+  <!--should maybe look at using decimal instead of float-->
+</div>
+<div style="display: block">
+  <br>
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Rounds</th>
+        <th>Score</th>
+        <th>Fairways</th>
+        <th>GIR</th>
+        <th>Putts</th>
+        <th>3-Putts</th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @rounds.any? %>
+        <tr>
+          <td><%= @rounds.count %></td>
+          <td><%= @rounds.average("score").round %></td>
+          <td><%= @rounds.average("fairways").round %></td>
+          <td><%= @rounds.average("gir").round %></td>
+          <td><%= @rounds.average("putts").round %></td>
+          <td><%= @rounds.average("three_putts").round %></td>
+          <td><%#= link_to 'Show', course %></td>
+          <td><%#= link_to 'Edit', edit_course_path(course) %></td>
+          <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
+      <% else %>
+        <p>Nothing to display...</p>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div style="display: inline-block">
+  <h1>Long Game (averages):</h1>
+  <!--Need error handling here for nil rounds-->
+  <!--should maybe look at using decimal instead of float-->
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Rounds</th>
+        <th>Drivers</th>
+        <th>Woods</th>
+        <th>Irons (L)</th>
+        <th>Irons (M)</th>
+        <th>Irons (S)</th>
+        <th colspan="6"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @rounds.any? %>
+        <tr>
+          <td><%= @rounds.count %></td>
+          <td><%= @rounds.average("missed_driver").round %></td>
+          <td><%= @rounds.average("missed_fairway_metal").round %></td>
+          <td><%= @rounds.average("missed_iron_long").round %></td>
+          <td><%= @rounds.average("missed_iron_mid").round %></td>
+          <td><%= @rounds.average("missed_iron_short").round %></td>
+          <td><%#= link_to 'Show', course %></td>
+          <td><%#= link_to 'Edit', edit_course_path(course) %></td>
+          <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
+      <% else %>
+        <p>Nothing to display...</p>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<div style="display: inline-block">
+  <h1>Short Game (averages):</h1>
+  <!--Need error handling here for nil rounds-->
+  <!--should maybe look at using decimal instead of float-->
+</div>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Rounds</th>
+        <th>Pitches</th>
+        <th>Chips</th>
+        <th>Sand</th>
+        <th>Putts (L)</th>
+        <th>Putts (M)</th>
+        <th>Putts (S)</th>
+        <th colspan="7"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @rounds.any? %>
+        <tr>
+          <td><%= @rounds.count %></td>
+          <td><%= @rounds.average("missed_pitch").round(1) %></td>
+          <td><%= @rounds.average("missed_chip").round(1) %></td>
+          <td><%= @rounds.average("missed_sand").round(1) %></td>
+          <td><%= @rounds.average("missed_putt_long").round(1) %></td>
+          <td><%= @rounds.average("missed_putt_mid").round(1) %></td>
+          <td><%= @rounds.average("missed_putt_short").round(1) %></td>
+          <td><%#= link_to 'Show', course %></td>
+          <td><%#= link_to 'Edit', edit_course_path(course) %></td>
+          <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        </tr>
+      <% else %>
+        <p>Nothing to display...</p>
+      <% end %>
+    </tbody>
+  </table>
+</div>

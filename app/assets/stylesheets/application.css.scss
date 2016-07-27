@@ -1,8 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @import 'bootstraply';
 
 .container {
     font-size: 1.09em;
+}
+
+.navbar-collapse {
+  text-align: center;
+  font-size: 1.3em;
+}
+
+.navbar-collapse .dropdown-menu {
+  text-align: center;
+  font-size: 1.05em;
+  // color: black;
+  // background-color: lightgrey;
 }

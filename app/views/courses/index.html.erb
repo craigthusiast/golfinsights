@@ -1,35 +1,37 @@
 <div style="display: inline-block">
   <h1>All Courses</h1>
 </div>
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Par</th>
-      <th>Rating</th>
-      <th>Slope</th>
-      <th>Tees</th>
-      <!--<th>Favourite</th>-->
-      <th colspan="5"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% if @courses.any? %>
-      <% @courses.each do |course| %>
-        <tr>
-          <td><%= link_to course.name, course %></td>
-          <td><%= course.par %></td>
-          <td><%= course.rating %></td>
-          <td><%= course.slope %></td>
-          <td><%= course.tees %></td>
-          <!--<td><%#= course.favourite %></td>-->
-        </tr>
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Par</th>
+        <th>Rating</th>
+        <th>Slope</th>
+        <th>Tees</th>
+        <!--<th>Favourite</th>-->
+        <th colspan="5"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @courses.any? %>
+        <% @courses.each do |course| %>
+          <tr>
+            <td><%= link_to course.name, course %></td>
+            <td><%= course.par %></td>
+            <td><%= course.rating %></td>
+            <td><%= course.slope %></td>
+            <td><%= course.tees %></td>
+            <!--<td><%#= course.favourite %></td>-->
+          </tr>
+        <% end %>
+      <% else %>
+        <p>Nothing to display...</p>
       <% end %>
-    <% else %>
-      <p>Nothing to display...</p>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
 
 <br>
 <%= link_to 'Add a Course', new_course_path, :class => "btn btn-primary" %>

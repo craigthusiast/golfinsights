@@ -8,9 +8,9 @@ class CoursesController < ApplicationController
     @courses = Course.order("name ASC")
   end
   
-  # def my_courses
-  #   @courses = Course.where(user: current_user).order("name ASC")
-  # end
+  def my_courses
+    @my_courses = Course.where(user: current_user).order("name ASC")
+  end
 
   # GET /courses/1
   # GET /courses/1.json
