@@ -1,21 +1,15 @@
-<%# if current_user %>
-<!--<h1>Dashboard</h1>-->
-<!--<p>Your current handicap is: </p>-->
-<!--<p>Your average GIR is: </p>-->
-
-<div class="list-group">
-    <h3><%= link_to "My Handicap", handicap_index_path, class: "list-group-item" %></h3>
-    <h3><%= link_to "My Stats", stats_index_path, class: "list-group-item" %></h3>
-    <h3><%= link_to "My Rounds", rounds_path, class: "list-group-item" %></h3>
-    <h3><%= link_to "Enter a Completed Round", new_round_path, class: "list-group-item" %></h3>
-    <!--<h3><%#= link_to "Start a Round", root_path, class: "list-group-item" %></h3>-->
-    <h3><%= link_to "My Courses", courses_path(current_user.courses.all), class: "list-group-item" %></h3>
-    <!--edit_zombie_tweet_path(@zombie, tweet)-->
-    <h3><%= link_to "All Courses", courses_path, class: "list-group-item" %></h3>
-    <h3><%= link_to "Submit a Course", new_course_path, class: "list-group-item" %></h3>
-    <!--<h3><%#= link_to "Social (coming soon)", root_path, class: "list-group-item" %></h3>-->
-</div>
-
-<%# else %>
-  <%#= render 'shared/welcome' %>
-<%# end %>
+<% if current_user %>
+  <div class="list-group">
+      <h3><%= link_to "My Handicap", handicap_index_path, class: "list-group-item" %></h3>
+      <h3><%= link_to "My Stats", stats_index_path, class: "list-group-item" %></h3>
+      <h3><%= link_to "My Rounds", rounds_path, class: "list-group-item" %></h3>
+      <h3><%= link_to "Enter a Completed Round", new_round_path, class: "list-group-item" %></h3>
+      <!--<h3><%#= link_to "Start a Round", root_path, class: "list-group-item" %></h3>-->
+      <h3><%= link_to "My Courses", courses_path(current_user.courses.all), class: "list-group-item" %></h3>
+      <!--<h3><%#= link_to "All Courses", courses_path, class: "list-group-item" %></h3>-->
+      <h3><%= link_to "Add a Course", new_course_path, class: "list-group-item" %></h3>
+      <!--<h3><%#= link_to "Social (coming soon)", root_path, class: "list-group-item" %></h3>-->
+  </div>
+<% else %>
+  <%= render 'pages/index' %>
+<% end %>

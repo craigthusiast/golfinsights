@@ -1,17 +1,18 @@
 class RoundsController < ApplicationController
-    before_action :set_round, only: [:show, :edit, :update, :destroy]
+  before_action :set_round, only: [:show, :edit, :update, :destroy]
 
   def index
-    @rounds = Round.where(user: current_user).order("date DESC")
-    @courses = Course.all 
+    @rounds = current_user.rounds.all.order("date DESC")
+    @courses = current_user.courses.all.order("name ASC")
   end
 
   def show
   end
 
   def new
-    @round = Round.new
-    @courses = Course.all
+    @round = current_user.rounds.build
+    @courses = current_user.courses.all.order("name ASC")
+    # @courses = Course.all
     # @tees = Course.tees
   end
 
@@ -20,49 +21,41 @@ class RoundsController < ApplicationController
 
   def create
     @round = current_user.rounds.build(round_params)
-
-    respond_to do |format|
-      if @round.save
-        format.html { redirect_to @round, notice: 'Round was successfully created.' }
-        format.json { render :show, status: :created, location: @round }
-      else
-        format.html { render :new }
-        format.json { render json: @round.errors, status: :unprocessable_entity }
-      end
+    if @round.save
+      flash[:success] = "Round added!"
+      redirect_to round_path(@round)
+    else
+      render 'new'
     end
   end
 
   def update
-    respond_to do |format|
-      if @round.update(round_params)
-        format.html { redirect_to @round, notice: 'Round was successfully updated.' }
-        format.json { render :show, status: :ok, location: @round }
-      else
-        format.html { render :edit }
-        format.json { render json: @round.errors, status: :unprocessable_entity }
-      end
+    if @round.update_attributes(round_params)
+      flash[:success] = "Round updated!"
+      redirect_to round_path(@round)
+    else
+      render 'edit'
     end
   end
 
   def destroy
-    @round.destroy
-    respond_to do |format|
-      format.html { redirect_to rounds_url, notice: 'Round was successfully destroyed.' }
-      format.json { head :no_content }
+    if @round.destroy
+      flash[:success] = "Round was successfully deleted!"
+    else
+      flash[:alert] = 'Error while trying to delete the round!'
     end
+    redirect_to rounds_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_round
-      @round = Round.find(params[:id])
+      @round = current_user.rounds.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def round_params
       params.require(:round).permit(:date, 
-                                    :user_id, 
-                                    :course_id,
                                     :course_name,
                                     :score, 
                                     :adjusted_score,

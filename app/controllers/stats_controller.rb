@@ -1,5 +1,5 @@
 class StatsController < ApplicationController
   def index
-    @rounds = Round.all
+    @rounds = current_user.rounds.all
   end
 end

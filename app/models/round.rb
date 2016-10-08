@@ -1,5 +1,6 @@
 class Round < ApplicationRecord
-  belongs_to :user
+  
+  # belongs_to :user  # Is this necessary?
   belongs_to :course
   has_many :holes, dependent: :destroy
   

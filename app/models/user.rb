@@ -5,6 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
          
   has_many :courses, dependent: :destroy
-  has_many :rounds, dependent: :destroy
+  has_many :rounds, through: :courses
+  
+  # has_many :rounds, dependent: :destroy
+  
   
 end

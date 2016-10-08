@@ -1,9 +1,9 @@
 class HandicapController < ApplicationController
   
   def index
-    @rounds = Round.all
-    @eligible_rounds = Round.eligible
-    # @eligible_rounds = Round.eligible.order('date DESC')  # How do I use this method to override the order from the model?
+    @rounds = current_user.rounds.all
+    # @eligible_rounds = Round.eligible
+    @eligible_rounds = current_user.rounds.eligible
     @handicap = Round.handicap
     @last_20 = Round.all.order('date DESC').first(20)
     @all_rounds = Round.all.order('date DESC')

@@ -5,7 +5,6 @@
 </div>
 <div style="display: block">
   <br>
-  <!--<h4>Performance:</h4>-->
 </div>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -13,17 +12,16 @@
       <tr>
         <th>Results</th>
         <th>Average</th>
-        <!--<th colspan="2"></th>-->
       </tr>
     </thead>
     <tbody>
       <% if @rounds.any? %>
-        <tr><td>Average Score:</td><td><%= @rounds.average("score").round %></td></tr>
-        <tr><td>Fairways Hit:</td><td><%= @rounds.average("fairways").round %>  (<%#= @rounds.average("fairways") / 14 * 100 %> %)</td></tr>
-        <tr><td>Greens in Regulation:</td><td><%= @rounds.average("gir").round %>  (<%#= @rounds.average("gir") / 18 * 100 %> %)</td></tr>
-        <tr><td>Putts per Round:</td><td><%= @rounds.average("putts").round %></td></tr>
-        <tr><td>3-Putts per Round:</td><td><%= @rounds.average("three_putts").round %></td></tr>
-        <tr><td>Penalty Strokes:</td><td><%= @rounds.average("penalties").round %></td></tr>
+        <tr><td>Avg. Score:</td><td><%= @rounds.average("score").round %></td></tr>
+        <tr><td>Avg. Fairways Hit:</td><td><%= @rounds.average("fairways").round %>  (<%= (@rounds.average("fairways") / 14 * 100).round %>%)</td></tr>
+        <tr><td>Avg. Greens in Regulation:</td><td><%= @rounds.average("gir").round %>  (<%= (@rounds.average("gir") / 18 * 100).round %>%)</td></tr>
+        <tr><td>Avg. Putts per Round:</td><td><%= @rounds.average("putts").round %></td></tr>
+        <tr><td>Avg. 3-Putts per Round:</td><td><%= @rounds.average("three_putts").round %></td></tr>
+        <tr><td>Avg. Penalty Strokes:</td><td><%= @rounds.average("penalties").round %></td></tr>
       <% else %>
         <p>Nothing to display...</p>
       <% end %>

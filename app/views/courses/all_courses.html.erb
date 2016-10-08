@@ -10,13 +10,11 @@
         <th>Rating</th>
         <th>Slope</th>
         <th>Tees</th>
-        <!--<th>Favourite</th>-->
-        <th colspan="5"></th>
       </tr>
     </thead>
     <tbody>
-      <% if @allcourses.any? %>
-        <% @allcourses.each do |course| %>
+      <% if @courses.any? %>
+        <% @courses.each do |course| %>
           <tr>
             <td><%= link_to course.name, course %></td>
             <td><%= course.par %></td>
