@@ -5,12 +5,16 @@ class CoursesController < ApplicationController
   # GET /courses.json
   def index
     # @courses = Course.all
-    @courses = Course.order("name ASC")
+    if params[:current_user]
+      @courses = Course.where(user: current_user).order("name ASC")
+    else
+      @courses = Course.order("name ASC")
+    end
   end
   
-  def my_courses
-    @my_courses = Course.where(user: current_user).order("name ASC")
-  end
+  # def all_courses
+  #   @allcourses = Course.where(user: current_user).order("name ASC")
+  # end
 
   # GET /courses/1
   # GET /courses/1.json

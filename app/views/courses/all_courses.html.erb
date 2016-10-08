@@ -1,5 +1,5 @@
 <div style="display: inline-block">
-  <h1>My Courses</h1>
+  <h1>All Courses</h1>
 </div>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -15,8 +15,8 @@
       </tr>
     </thead>
     <tbody>
-      <% if @my_courses.any? %>
-        <% @my_courses.each do |course| %>
+      <% if @allcourses.any? %>
+        <% @allcourses.each do |course| %>
           <tr>
             <td><%= link_to course.name, course %></td>
             <td><%= course.par %></td>

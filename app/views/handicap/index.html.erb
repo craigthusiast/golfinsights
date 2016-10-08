@@ -5,15 +5,17 @@
     <h1>My Handicap: <%= @handicap.round %></h1>
   <% end %>
 </div>
+
 <div style="display: block">
   <br>
   <% if @rounds.count >= 5 && @rounds.count < 20 %>
-    <h4>Lowest <%= @eligible_rounds.count %> of last <%= @rounds.count %> rounds:</h4>
+    <h4>(Handicap = Average of Lowest <%= @eligible_rounds.count %> of last <%= @rounds.count %> rounds)</h4>
   <% elsif @rounds.count >= 20 %>
-    <h4>Lowest <%= @eligible_rounds.count %> of last 20 rounds:</h4>
+    <h4>(Handicap = Average of Lowest <%= @eligible_rounds.count %> of last 20 rounds)</h4>
   <% else %>
   <% end %>
 </div>
+
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
@@ -60,3 +62,34 @@
     </tbody>
   </table>
 </div>
+
+<div style="display: block">
+  <br>
+  <h4>My Last 20 Rounds:</h4>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Course</th>
+        <th>Score</th>
+        <th>Handicap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @last_20.each do |round| %>
+        <tr>
+          <td><%= link_to round.date, round %></td>
+          <td><%= round.course.name %></td>
+          <td><%= round.score %></td>
+          <td><%= round.handicap_differential %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br>
+<%= link_to 'All My Rounds', rounds_path, :class => "btn btn-primary" %>

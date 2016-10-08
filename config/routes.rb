@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :courses
+  resources :courses  # change this to include the needed view scopes (including 'all' below)
   resources :rounds
   resources :holes
   
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   
   root :to => 'home#index'
   
-  get 'courses/my_courses'
+  # get 'courses/all_courses'
   get 'handicap/index'
   get 'stats/index'
   
