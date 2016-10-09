@@ -12,8 +12,6 @@ class RoundsController < ApplicationController
   def new
     @round = current_user.rounds.build
     @courses = current_user.courses.all.order("name ASC")
-    # @courses = Course.all
-    # @tees = Course.tees
   end
 
   def edit
@@ -21,10 +19,8 @@ class RoundsController < ApplicationController
 
   def create
     @round = current_user.rounds.build(round_params)
-    # @round.course = current_user.courses.find_by_name(params[:name])
-    @round.course = Course.find_by_id(:course_id)
-    # binding.pry
-    # @course = current_user.courses.find(params[:course_id])
+    @round.course = current_user.courses.find(params[:round][:course_id])
+
     if @round.save
       flash[:success] = "Round added!"
       redirect_to round_path(@round)
@@ -60,7 +56,7 @@ class RoundsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def round_params
       params.require(:round).permit(:date, 
-                                    :course_name,
+                                    :course_id,
                                     :score, 
                                     :adjusted_score,
                                     :fairways, 

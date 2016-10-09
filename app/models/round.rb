@@ -3,6 +3,7 @@ class Round < ApplicationRecord
   belongs_to :user  # Is this necessary?
   belongs_to :course
   has_many :holes, dependent: :destroy
+  accepts_nested_attributes_for :course
   
   before_save :calculate_differential  # Use before_create instead so that it doesn't change inadvertently when the record is subsequently saved
   

@@ -39,7 +39,7 @@
           </tr>
         <% end %>
       <% elsif @rounds.count >= 1 && @rounds.count < 5 %>
-        <p>(Need minimum of 5 rounds to calculate handicap.)</p>
+        <!--<p>(Need minimum of 5 rounds to calculate handicap.)</p>-->
         <% @rounds.each do |round| %>
           <tr>
             <td><%= link_to round.date, round %></td>
