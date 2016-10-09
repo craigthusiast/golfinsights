@@ -17,7 +17,7 @@
     
     <div class="form-group">
       <%#= f.label :course %><br>
-      <%= f.collection_select(:course_id, Course.all.order("name ASC"), :id, :name, :prompt => "Select a course") %> or <%= link_to 'Add a new Course', new_course_path %>
+      <%= f.collection_select(:course_id, current_user.courses.all.order("name ASC"), :id, :name, :prompt => "Select a course") %> or <%= link_to 'Add a new Course', new_course_path %>
     </div>
     
     <div class="form-group">

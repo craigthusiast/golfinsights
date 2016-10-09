@@ -1,6 +1,7 @@
 <div style="display: inline-block">
   <% if @rounds.count < 5 %>
-    <h1>My Handicap: <%= @handicap %></h1>
+    <h1>My Handicap: N/A </h1>
+    <p>(<%= @handicap %>)</p>
   <% else @rounds.count >= 5 %>
     <h1>My Handicap: <%= @handicap.round %></h1>
   <% end %>
@@ -9,9 +10,9 @@
 <div style="display: block">
   <br>
   <% if @rounds.count >= 5 && @rounds.count < 20 %>
-    <h4>(Handicap = Average of Lowest <%= @eligible_rounds.count %> of last <%= @rounds.count %> rounds)</h4>
+    <h4>(Average of lowest <%= @eligible_rounds.count %> of last <%= @rounds.count %> rounds)</h4>
   <% elsif @rounds.count >= 20 %>
-    <h4>(Handicap = Average of Lowest <%= @eligible_rounds.count %> of last 20 rounds)</h4>
+    <h4>(Average of lowest <%= @eligible_rounds.count %> of last 20 rounds)</h4>
   <% else %>
   <% end %>
 </div>
@@ -35,30 +36,28 @@
             <td><%= round.course.name %></td>
             <td><%= round.score %></td>
             <td><%= round.handicap_differential %></td>
-            <td><%#= link_to 'Show', course %></td>
-            <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-            <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
           </tr>
         <% end %>
       <% elsif @rounds.count >= 1 && @rounds.count < 5 %>
-        <p>Need minimum of 5 rounds to calculate handicap...</p>
+        <p>(Need minimum of 5 rounds to calculate handicap.)</p>
         <% @rounds.each do |round| %>
           <tr>
             <td><%= link_to round.date, round %></td>
             <td><%= round.course.name %></td>
             <td><%= round.score %></td>
             <td><%= round.handicap_differential %></td>
-            <td><%#= link_to 'Show', course %></td>
-            <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-            <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
           </tr>
         <% end %>
       <% else %>
-        <%= link_to "Enter your first round", new_round_path %>
+        <%= link_to "Enter your first round", new_round_path, :class => "btn btn-primary" %>
+        <br>
+        <br>
       <% end %>
     </tbody>
   </table>
 </div>
+
+<% if @rounds.count >= 5 %>
 
 <div style="display: block">
   <br>
@@ -90,3 +89,5 @@
 
 <br>
 <%= link_to 'All My Rounds', rounds_path, :class => "btn btn-primary" %>
+
+<% end %>

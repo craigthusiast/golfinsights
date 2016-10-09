@@ -16,14 +16,14 @@
     </thead>
     <tbody>
       <% if @rounds.any? %>
-        <tr><td>Avg. Score:</td><td><%= @rounds.average("score").round %></td></tr>
-        <tr><td>Avg. Fairways Hit:</td><td><%= @rounds.average("fairways").round %>  (<%= (@rounds.average("fairways") / 14 * 100).round %>%)</td></tr>
-        <tr><td>Avg. Greens in Regulation:</td><td><%= @rounds.average("gir").round %>  (<%= (@rounds.average("gir") / 18 * 100).round %>%)</td></tr>
-        <tr><td>Avg. Putts per Round:</td><td><%= @rounds.average("putts").round %></td></tr>
-        <tr><td>Avg. 3-Putts per Round:</td><td><%= @rounds.average("three_putts").round %></td></tr>
-        <tr><td>Avg. Penalty Strokes:</td><td><%= @rounds.average("penalties").round %></td></tr>
+      <tr><td>Avg. Score:</td><td><%= @rounds.average("score").round %></td></tr>
+      <tr><td>Avg. Fairways Hit:</td><td><%= @rounds.average("fairways").round %>  (<%= (@rounds.average("fairways") / 14 * 100).round %>%)</td></tr>
+      <tr><td>Avg. Greens in Reg:</td><td><%= @rounds.average("gir").round %>  (<%= (@rounds.average("gir") / 18 * 100).round %>%)</td></tr>
+      <tr><td>Avg. Putts / Round:</td><td><%= @rounds.average("putts").round %></td></tr>
+      <tr><td>Avg. 3-Putts / Round:</td><td><%= @rounds.average("three_putts").round %></td></tr>
+      <tr><td>Avg. Penalties:</td><td><%= @rounds.average("penalties").round %></td></tr>
       <% else %>
-        <p>Nothing to display...</p>
+        <!--<p>Nothing to display...</p>-->
       <% end %>
     </tbody>
   </table>
@@ -43,24 +43,27 @@
     </thead>
     <tbody>
       <% if @rounds.any? %>
-        <tr><td>Drivers:</td><td><%= @rounds.average("missed_driver").round %></td></tr>
-        <tr><td>Fairway Woods:</td><td><%= @rounds.average("missed_fairway_metal").round %></td></tr>
-        <tr><td style="font-weight: bold">Missed Woods (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_driver").round + @rounds.average("missed_fairway_metal").round %></td></tr>
-        <tr><td>Long Irons (3-5):</td><td><%= @rounds.average("missed_iron_long").round %></td></tr>
-        <tr><td>Mid Irons (6-8):</td><td><%= @rounds.average("missed_iron_mid").round %></td></tr>
-        <tr><td>Short Irons (9-LW):</td><td><%= @rounds.average("missed_iron_short").round %></td></tr>
-        <tr><td style="font-weight: bold">Missed Irons (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_iron_long").round + @rounds.average("missed_iron_mid").round + @rounds.average("missed_iron_short").round %></td></tr>
-        <tr><td>Pitches:</td><td><%= @rounds.average("missed_pitch").round %></td></tr>
-        <tr><td>Chips:</td><td><%= @rounds.average("missed_chip").round %></td></tr>
-        <tr><td>Sand Shots:</td><td><%= @rounds.average("missed_sand").round %></td></tr>
-        <tr><td style="font-weight: bold">Missed Short Game (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_pitch").round + @rounds.average("missed_chip").round + @rounds.average("missed_sand").round %></td></tr>
-        <tr><td>Long Putts:</td><td><%= @rounds.average("missed_putt_long").round %></td></tr>
-        <tr><td>Medium Putts:</td><td><%= @rounds.average("missed_putt_mid").round %></td></tr>
-        <tr><td>Short Putts:</td><td><%= @rounds.average("missed_putt_short").round %></td></tr>
-        <tr><td style="font-weight: bold">Missed Putts (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_putt_long").round + @rounds.average("missed_putt_mid").round + @rounds.average("missed_putt_short").round %></td></tr>
+      <tr><td>Drivers:</td><td><%= @rounds.average("missed_driver").round %></td></tr>
+      <tr><td>Fairway Woods:</td><td><%= @rounds.average("missed_fairway_metal").round %></td></tr>
+      <tr><td style="font-weight: bold">Missed Woods (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_driver").round + @rounds.average("missed_fairway_metal").round %></td></tr>
+      <tr><td>Long Irons (3-5):</td><td><%= @rounds.average("missed_iron_long").round %></td></tr>
+      <tr><td>Mid Irons (6-8):</td><td><%= @rounds.average("missed_iron_mid").round %></td></tr>
+      <tr><td>Short Irons (9-LW):</td><td><%= @rounds.average("missed_iron_short").round %></td></tr>
+      <tr><td style="font-weight: bold">Missed Irons (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_iron_long").round + @rounds.average("missed_iron_mid").round + @rounds.average("missed_iron_short").round %></td></tr>
+      <tr><td>Pitches:</td><td><%= @rounds.average("missed_pitch").round %></td></tr>
+      <tr><td>Chips:</td><td><%= @rounds.average("missed_chip").round %></td></tr>
+      <tr><td>Sand Shots:</td><td><%= @rounds.average("missed_sand").round %></td></tr>
+      <tr><td style="font-weight: bold">Missed Short Game (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_pitch").round + @rounds.average("missed_chip").round + @rounds.average("missed_sand").round %></td></tr>
+      <tr><td>Long Putts:</td><td><%= @rounds.average("missed_putt_long").round %></td></tr>
+      <tr><td>Medium Putts:</td><td><%= @rounds.average("missed_putt_mid").round %></td></tr>
+      <tr><td>Short Putts:</td><td><%= @rounds.average("missed_putt_short").round %></td></tr>
+      <tr><td style="font-weight: bold">Missed Putts (Total):</td><td style="font-weight: bold"><%= @rounds.average("missed_putt_long").round + @rounds.average("missed_putt_mid").round + @rounds.average("missed_putt_short").round %></td></tr>
       <% else %>
-        <p>Nothing to display...</p>
+        <!--<p>Nothing to display...</p>-->
       <% end %>
     </tbody>
   </table>
 </div>
+
+<br>
+<%= link_to 'Add a Round', new_round_path, :class => "btn btn-primary" %>

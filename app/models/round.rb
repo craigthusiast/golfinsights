@@ -1,6 +1,6 @@
 class Round < ApplicationRecord
   
-  # belongs_to :user  # Is this necessary?
+  belongs_to :user  # Is this necessary?
   belongs_to :course
   has_many :holes, dependent: :destroy
   
@@ -9,13 +9,14 @@ class Round < ApplicationRecord
   scope :last_twenty, -> { order("handicap_differential ASC", "date DESC").limit(20) }
 
   def calculate_differential
-      self.differential = self.score.to_f - self.course.rating
-      self.handicap_differential = self.differential * (113 / self.course.slope.to_f)
+    # binding.pry
+    self.differential = self.score.to_f - self.course.rating
+    self.handicap_differential = self.differential * (113 / self.course.slope.to_f)
   end
   
   def self.eligible
     if count < 5
-      @eligible_rounds = "Not enough rounds"
+      @eligible_rounds = "Need minimum of 5 rounds to calculate handicap."
     elsif count == 5 || count == 6
       eligible = 1
       @eligible_rounds = self.order('handicap_differential ASC').limit(eligible)
@@ -52,7 +53,7 @@ class Round < ApplicationRecord
   
   def self.handicap
     if count < 5
-      @handicap = "Not enough rounds"
+      @handicap = "Need minimum of 5 rounds to calculate handicap."
     elsif count == 5 || count == 6
       eligible = 1
       @handicap = @eligible_rounds.pluck(:handicap_differential).sum / eligible

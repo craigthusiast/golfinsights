@@ -21,6 +21,10 @@ class RoundsController < ApplicationController
 
   def create
     @round = current_user.rounds.build(round_params)
+    # @round.course = current_user.courses.find_by_name(params[:name])
+    @round.course = Course.find_by_id(:course_id)
+    # binding.pry
+    # @course = current_user.courses.find(params[:course_id])
     if @round.save
       flash[:success] = "Round added!"
       redirect_to round_path(@round)

@@ -1,5 +1,11 @@
 <div style="display: inline-block">
-  <h1>My Courses</h1>
+  <h1>My Courses (<%= @courses.count %>)</h1>
+</div>
+<div>
+  <br>
+  <%= link_to 'Add a Course', new_course_path, :class => "btn btn-primary" %>
+  <br>
+  <br>
 </div>
 <div class="table-responsive">
   <table class="table table-striped">
@@ -13,23 +19,23 @@
       </tr>
     </thead>
     <tbody>
-      <% if @courses.any? %>
-        <% @courses.each do |course| %>
-          <tr>
-            <td><%= link_to course.name, course %></td>
-            <td><%= course.par %></td>
-            <td><%= course.rating %></td>
-            <td><%= course.slope %></td>
-            <td><%= course.tees %></td>
-            <!--<td><%#= course.favourite %></td>-->
-          </tr>
-        <% end %>
-      <% else %>
-        <p>Nothing to display...</p>
+      <%# if @courses.any? %>
+      <% @courses.each do |course| %>
+        <tr>
+          <td><%= link_to course.name, course %></td>
+          <td><%= course.par %></td>
+          <td><%= course.rating %></td>
+          <td><%= course.slope %></td>
+          <td><%= course.tees %></td>
+          <!--<td><%#= course.favourite %></td>-->
+        </tr>
       <% end %>
+      <!--<%# else %>-->
+      <!--  <p>Nothing to display...</p>-->
+      <!--<%# end %>-->
     </tbody>
   </table>
 </div>
 
-<br>
-<%= link_to 'Add a Course', new_course_path, :class => "btn btn-primary" %>
+<!--<br>-->
+<!--<%#= link_to 'Add a Course', new_course_path, :class => "btn btn-primary" %>-->

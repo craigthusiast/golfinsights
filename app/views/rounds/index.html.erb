@@ -1,39 +1,38 @@
 <div style="display: inline-block">
   <h1>My Rounds (<%= @rounds.count %>)</h1>
 </div>
+<div>
+  <br>
+  <%= link_to 'Add a Round', new_round_path, :class => "btn btn-primary" %>
+  <br>
+  <br>
+</div>
 <div class="table-responsive">
   <table class="table table-striped">
     <thead>
       <tr>
         <th>Date</th>
         <th>Course</th>
-        <!--<th>Rating</th>-->
-        <!--<th>Slope</th>-->
-        <!--<th>Favourite</th>-->
         <th>Score</th>
         <th>Handicap</th>
-        <th colspan="4"></th>
       </tr>
     </thead>
     <tbody>
-      <% if @rounds.any? %>
-        <% @rounds.each do |round| %>
-          <tr>
-            <td><%= link_to round.date, round %></td>
-            <td><%= round.course.name %></td>
-            <td><%= round.score %></td>
-            <td><%= round.handicap_differential %></td>
-            <td><%#= link_to 'Show', course %></td>
-            <td><%#= link_to 'Edit', edit_course_path(course) %></td>
-            <!--<td><%#= link_to 'Delete', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
-          </tr>
-        <% end %>
-      <% else %>
-        <p>Nothing to display...</p>
+      <%# if @rounds.any? %>
+      <% @rounds.each do |round| %>
+        <tr>
+          <td><%= link_to round.date, round %></td>
+          <td><%= round.course.name %></td>
+          <td><%= round.score %></td>
+          <td><%= round.handicap_differential %></td>
+        </tr>
       <% end %>
+      <!--<%# else %>-->
+      <!--  <p>Nothing to display...</p>-->
+      <!--<%# end %>-->
     </tbody>
   </table>
 </div>
 
-<br>
-<%= link_to 'Add a Round', new_round_path, :class => "btn btn-primary" %>
+<!--<br>-->
+<!--<%#= link_to 'Add a Round', new_round_path, :class => "btn btn-primary" %>-->
