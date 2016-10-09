@@ -7,7 +7,6 @@ class User < ApplicationRecord
   has_many :courses, dependent: :destroy
   has_many :rounds, through: :courses
   
-  # has_many :rounds, dependent: :destroy
-  
+  validates :first_name, presence: true
   
 end
