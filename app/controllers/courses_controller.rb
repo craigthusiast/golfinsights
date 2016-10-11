@@ -61,6 +61,11 @@ class CoursesController < ApplicationController
     end
     redirect_to courses_url
   end
+  
+  def import
+    @courses = current_user.courses.import(params[:file])
+    redirect_to courses_path, flash[:success] = "Courses imported successfully."
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

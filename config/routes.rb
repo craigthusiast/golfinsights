@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
   devise_for :users
-  resources :courses  # change this to include the needed view scopes (including 'all' below)
-  resources :rounds
+  resources :courses do  # Also how do I include the courses/all route below in here?
+    collection { post :import }
+  end
+  
+  resources :rounds do
+    collection { post :import }
+  end
+  
   resources :holes
   
   authenticated :user do

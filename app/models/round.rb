@@ -7,8 +7,13 @@ class Round < ApplicationRecord
   validates :date, :score, :adjusted_score, :course_id, presence: true
   
   before_save :calculate_differential  # Use before_create instead so that it doesn't change inadvertently when the record is subsequently saved
-  
   scope :last_twenty, -> { order("handicap_differential ASC", "date DESC").limit(20) }
+  
+  def self.import(file)
+    CSV.foreach(file.path, headers: true) do |row|
+      self.create! row.to_hash
+    end
+  end
 
   def calculate_differential
     # binding.pry

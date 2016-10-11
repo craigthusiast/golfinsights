@@ -34,5 +34,10 @@
   </table>
 </div>
 
-<!--<br>-->
-<!--<%#= link_to 'Add a Round', new_round_path, :class => "btn btn-primary" %>-->
+<br>
+<h3>Import Rounds CSV</h3>
+<br>
+<%= form_tag import_rounds_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Upload Rounds" %>
+<% end %>

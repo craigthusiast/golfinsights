@@ -46,6 +46,11 @@ class RoundsController < ApplicationController
     end
     redirect_to rounds_url
   end
+  
+  def import
+    @rounds = current_user.rounds.import(params[:file])
+    redirect_to rounds_path, flash[:success] = "Rounds imported successfully."
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
