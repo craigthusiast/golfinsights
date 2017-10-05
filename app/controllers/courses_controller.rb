@@ -16,7 +16,12 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
-    # @rounds = current_user.courses(course_params).rounds.order('date DESC')  # Need to fix this to show user.course.rounds
+    if @course
+      @rounds = @course.rounds.order('date DESC')
+    else
+      flash[:alert] = 'Unable to view this Course.'
+      redirect_to courses_url
+    end
   end
 
   # GET /courses/new

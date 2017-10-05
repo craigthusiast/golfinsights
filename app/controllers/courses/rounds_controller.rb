@@ -1,4 +1,4 @@
-class RoundsController < ApplicationController
+class Courses::RoundsController < ApplicationController
   before_action :set_round, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -7,6 +7,7 @@ class RoundsController < ApplicationController
   end
 
   def show
+    @course = current_user.courses.find_by(params[:course_id])
   end
 
   def new

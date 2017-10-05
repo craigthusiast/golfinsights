@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
   devise_for :users
+  
   resources :courses do  # Also how do I include the courses/all route below in here?
     collection { post :import }
+    resources :rounds, controller: 'courses/rounds'
   end
   
   resources :rounds do
