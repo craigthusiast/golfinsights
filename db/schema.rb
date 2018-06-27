@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -24,9 +23,8 @@ ActiveRecord::Schema.define(version: 20160614141932) do
     t.datetime "updated_at",                                   null: false
     t.integer  "yardage",    limit: 2
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_courses_on_user_id"
   end
-
-  add_index "courses", ["user_id"], name: "index_courses_on_user_id"
 
   create_table "holes", force: :cascade do |t|
     t.integer  "number"
@@ -50,9 +48,8 @@ ActiveRecord::Schema.define(version: 20160614141932) do
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
     t.integer  "round_id"
+    t.index ["round_id"], name: "index_holes_on_round_id"
   end
-
-  add_index "holes", ["round_id"], name: "index_holes_on_round_id"
 
   create_table "rounds", force: :cascade do |t|
     t.date     "date"
@@ -82,10 +79,9 @@ ActiveRecord::Schema.define(version: 20160614141932) do
     t.decimal  "handicap_differential", precision: 3, scale: 1
     t.decimal  "differential",          precision: 3, scale: 1
     t.boolean  "handicap_eligible"
+    t.index ["course_id"], name: "index_rounds_on_course_id"
+    t.index ["user_id"], name: "index_rounds_on_user_id"
   end
-
-  add_index "rounds", ["course_id"], name: "index_rounds_on_course_id"
-  add_index "rounds", ["user_id"], name: "index_rounds_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -102,9 +98,8 @@ ActiveRecord::Schema.define(version: 20160614141932) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
